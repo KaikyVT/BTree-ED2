@@ -12,7 +12,7 @@ typedef struct No {
 
 typedef No *Btree;
 
-No criaPagina();
+No* criaPagina();
 Btree insereArvoreB(Btree a, int chave);
 int buscaArvoreB(Btree a, int chave);
 void destroiArvoreB(Btree a);
