@@ -117,12 +117,13 @@ Btree insereArvoreB(Btree a, int chave, long posicao)
         raiz->chave[0]   = chave;
         raiz->posicao[0] = posicao;
         raiz->numchaves  = 1;
+        raiz->folha = 1;
         return raiz;
     }
 
     if (a->numchaves == MAX_CHAVES) {
-        No *novaRaiz     = criaPagina();
-        novaRaiz->folha  = 0;
+        No *novaRaiz = criaPagina();
+        novaRaiz->folha = 0;
         novaRaiz->filhos[0] = a;
         splitFilho(novaRaiz, 0);
         insereNaoCheio(novaRaiz, chave, posicao);
@@ -144,7 +145,7 @@ void gravaArvoreB(Btree a, FILE *f)
     while (ini < fim) {
         No *atual = fila[ini++];
 
-        fprintf(f, "NO| ");
+        fprintf(f, "NO| %p ", atual);
         for (int i = 0; i < atual->numchaves; i++) {
             fprintf(f, "chave=%d pos=%ld", atual->chave[i], atual->posicao[i]);
             if (i < atual->numchaves - 1) fprintf(f, " | ");

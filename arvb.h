@@ -16,6 +16,7 @@ typedef struct No {
 typedef No *Btree;
 
 No    *criaPagina();
+
 void   destroiArvoreB(Btree a);
 
 Btree  insereArvoreB(Btree a, int chave, long posicao);
